@@ -16,31 +16,33 @@ unzip ASF-linux-x64.zip -d ASF/
 echo -e "是否需要开启通过steam组输入指令功能？ \n1.开启 \n2.不开启"
 read -r -p "请输入数字" GP
 case $GP in
-1)echo "输入你的steam64位id"
-  read ID
-  echo "输入你的组id"
-  read Group
-  cd ASF/config
-  touch bot.json
-  echo -e "{
-  "\"Enabled\"": true,
-  "\"SteamLogin\"": "\"$Account\"",
-  "\"SteamPassword\"": "\"$Code\"",
-  "\"IsBotAccount\"": false,
-  "\"s_SteamMasterClanID\"": "\"$Group\"",
-  "\"SteamUserPermissions\"": {
-    "\"$ID\"": 3
-  }
-}" > /root/ASF/config/bot.json
-*)cd ASF/config
-  touch bot.json
-  echo -e "{
-  "\"Enabled\"": true,
-  "\"SteamLogin\"": "\"$Account\"",
-  "\"SteamPassword\"": "\"$Code\"",
-  "\"IsBotAccount\"": false,
-  }
-}" > /root/ASF/config/bot.json
+  1)echo "输入你的steam64位id"
+    read ID
+    echo "输入你的组id"
+    read Group
+    cd ASF/config
+    touch bot.json
+    echo -e "{
+    "\"Enabled\"": true,
+    "\"SteamLogin\"": "\"$Account\"",
+    "\"SteamPassword\"": "\"$Code\"",
+    "\"IsBotAccount\"": false,
+    "\"s_SteamMasterClanID\"": "\"$Group\"",
+    "\"SteamUserPermissions\"": {
+      "\"$ID\"": 3
+    }
+  }" > /root/ASF/config/bot.json
+  ;;
+  2)cd ASF/config
+    touch bot.json
+    echo -e "{
+    "\"Enabled\"": true,
+    "\"SteamLogin\"": "\"$Account\"",
+    "\"SteamPassword\"": "\"$Code\"",
+    "\"IsBotAccount\"": false,
+    }
+  }" > /root/ASF/config/bot.json
+  ;;
 esac
 echo -e "{
   "\"CurrentCulture\"": "\"zh-CN\"",
