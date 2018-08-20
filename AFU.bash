@@ -14,7 +14,7 @@ sudo apt install screen
 wget https://github.com/JustArchi/ArchiSteamFarm/releases/download/3.3.0.3/ASF-linux-x64.zip
 unzip ASF-linux-x64.zip -d ASF/
 echo -e "是否需要开启通过steam组输入指令功能？ \n1.开启 \n2.不开启"
-read -r -p "请输入数字" GP
+read -r -p "请输入数字 \n" GP
 case $GP in
   1)echo "输入你的steam64位id"
     read ID
