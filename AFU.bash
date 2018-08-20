@@ -40,7 +40,6 @@ case $GP in
     "\"SteamLogin\"": "\"$Account\"",
     "\"SteamPassword\"": "\"$Code\"",
     "\"IsBotAccount\"": false
-    }
   }" > /root/ASF/config/bot.json
   ;;
 esac
