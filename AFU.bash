@@ -7,9 +7,9 @@ echo "输入你的帐号";
 read Account
 echo "输入你的密码";
 read Code
-echo "输入你的steam64位id"
+echo "输入你的steam64位id";
 read ID
-echo "输入你的组id"
+echo "输入你的组id";
 read Group
 sudo apt-get update
 sudo apt-get install curl libunwind8 gettext
