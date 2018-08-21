@@ -45,7 +45,7 @@ case $IL in
       "\"SteamUserPermissions\"": {
         "\"$ID\"": 3
 		},
-	  "\"TradingPreferences\"": "\"$Order\"",
+	  "\"TradingPreferences\"": "\$Order"\,
 	  "\"AcceptGifts\"": GT,
 	  "\"LootableTypes\"": [
 	    "\"$LO\""
