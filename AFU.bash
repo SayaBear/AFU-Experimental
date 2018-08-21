@@ -46,7 +46,7 @@ case $IL in
         "\"$ID\"": 3
 		},
 	  "\"TradingPreferences\"": "\"$Order\"",
-	  "\"AcceptGifts\"": "\"$GT\"",
+	  "\"AcceptGifts\"": GT,
 	  "\"LootableTypes\"": [
 	    "\"$LO\""
       ],
@@ -71,7 +71,6 @@ case $IL in
 	  else
 	    sed -i 's/GT/False/' /root/ASF/config/bot.json
 	  fi
-	  
      ;;
     2)cd ASF/config
       touch bot.json
