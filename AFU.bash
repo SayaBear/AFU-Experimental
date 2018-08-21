@@ -22,7 +22,7 @@ case $IL in
     "\"Enabled\"": true,
     "\"SteamLogin\"": "\"$Account\"",
     "\"SteamPassword\"": "\"$Code\"",
-    "\"IsmasterAccount\"": false
+    "\"IsmasterAccount\"": True
   }" > /root/ASF/config/master.json
   ;;
   2)echo -e "是否需要开启通过steam组输入指令功能？ \n1.开启 \n2.不开启 \n请输入数字";
@@ -42,7 +42,7 @@ case $IL in
       "\"Enabled\"": true,
       "\"SteamLogin\"": "\"$Account\"",
       "\"SteamPassword\"": "\"$Code\"",
-      "\"IsmasterAccount\"": false,
+      "\"IsmasterAccount\"": True,
       "\"s_SteamMasterClanID\"": "\"$Group\"",
       "\"SteamUserPermissions\"": {
         "\"$ID\"": 3
@@ -102,7 +102,7 @@ case $IL in
 	  if [[ -z $CR ]];then
 	    sed -i '/CT/d' /root/ASF/config/master.json
 	  else
-	    sed -i "/s/CT/$CR" /root/ASF/config/master.json
+	    sed -i '/s/$CT/$CR/g' /root/ASF/config/master.json
 	  fi 
      ;;
     2)cd ASF/config
