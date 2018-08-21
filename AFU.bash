@@ -13,8 +13,8 @@ sudo apt install unzip
 sudo apt install screen
 wget https://github.com/JustArchi/ArchiSteamFarm/releases/download/3.3.0.3/ASF-linux-x64.zip
 unzip ASF-linux-x64.zip -d ASF/
-echo -e "请选择您是需要单纯挂卡还是需要进行进阶操作 \n1.单纯挂卡 \n2.进阶操作 \n3.请输入数字";
-read IL
+echo -e "请选择您是需要单纯挂卡还是需要进行进阶操作 \n1.单纯挂卡 \n2.进阶操作"
+read -r -p "请输入数字" IL
 case $IL in
   1)cd ASF/config
     touch bot.json
@@ -25,7 +25,7 @@ case $IL in
     "\"IsBotAccount\"": false
   }" > /root/ASF/config/bot.json
   ;;
-  2)echo -e "是否需要开启通过steam组输入指令功能？ \n1.开启 \n2.不开启";
+  2)echo -e "是否需要开启通过steam组输入指令功能？ \n1.开启 \n2.不开启"
     read -r -p "请输入数字" GP
     case $GP in
     1)echo "输入你的steam64位id"
