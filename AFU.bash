@@ -46,14 +46,14 @@ case $IL in
         "\"$ID\"": 3
 		},
 	  "\"TradingPreferences\"": "\"$Order\"",
-	  "\"AcceptGifts\"": "\"$GF\""
+	  "\"AcceptGifts\"": "\"$Gift\""
      }" > /root/ASF/config/bot.json
 	  echo -e "请选择您是否要自动接受礼物 \n1.是 \n2.否"
 	  read GF
-	  if [ $GF == 1 ]
-	    sed -i 's/GF/True/' /root/ASF/config/bot.json
+	  if [ $GF == 1 ]; then
+	    sed -i 's/Gift/True/' /root/ASF/config/bot.json
 	  else
-	    sed -i 's/GF/False/' /root/ASF/config/bot.json
+	    sed -i 's/Gift/False/' /root/ASF/config/bot.json
 	  fi
      ;;
     2)cd ASF/config
