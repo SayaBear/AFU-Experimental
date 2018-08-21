@@ -17,13 +17,13 @@ echo -e "请选择您是需要单纯挂卡还是需要进行进阶操作 \n1.单
 read -r -p "请输入数字" IL
 case $IL in
   1)cd ASF/config
-    touch bot.json
+    touch master.json
     echo -e "{
     "\"Enabled\"": true,
     "\"SteamLogin\"": "\"$Account\"",
     "\"SteamPassword\"": "\"$Code\"",
-    "\"IsBotAccount\"": false
-  }" > /root/ASF/config/bot.json
+    "\"IsmasterAccount\"": false
+  }" > /root/ASF/config/master.json
   ;;
   2)echo -e "是否需要开启通过steam组输入指令功能？ \n1.开启 \n2.不开启 \n请输入数字";
     read GP
@@ -34,27 +34,29 @@ case $IL in
       read Group
 	  echo -e "请选择您期待的挂卡顺序 \n0.无序模式 \n1.根据AppID正序挂卡 \n2.根据AppID逆序挂卡 \n3.根据剩余掉卡数自少到多挂卡 \n4.根据剩余挂卡数自多到少挂卡 \n5.根据游戏时间自少到多挂卡 \n6.根据游戏时间自多到少挂卡 \n7.根据游戏名A-Z挂卡 \n8.根据游戏名Z-A挂卡 \n9.随机模式 \n10.根据徽章等级由低到高挂卡 \n11.根据徽章等级由高到低挂卡 \n12.根据游戏入库时间由远及近挂卡 \n13.根据游戏入库时间由近及远挂卡 \n14.优先挂不可交易卡牌 \n15.优先挂可交易卡牌"
 	  read Order #check
+	  echo -e "请选择您挂卡时的状态 \n0.离线 \n1.在线 \n2.忙碌 \n3.离开 \n4.打盹 \n5.准备交易 \n6.准备玩游戏 \n7.隐身"
+	  read Status
       cd ASF/config
-      touch bot.json
+      touch master.json
       echo -e "{
       "\"Enabled\"": true,
       "\"SteamLogin\"": "\"$Account\"",
       "\"SteamPassword\"": "\"$Code\"",
-      "\"IsBotAccount\"": false,
+      "\"IsmasterAccount\"": false,
       "\"s_SteamMasterClanID\"": "\"$Group\"",
       "\"SteamUserPermissions\"": {
         "\"$ID\"": 3
 		},
-	  "\"TradingPreferences\"": "\$Order"\,
+	  "\"TradingPreferences\"": "$Order",
 	  "\"AcceptGifts\"": GT,
 	  "\"LootableTypes\"": [
-	    "\"$LO\""
+	    "$LO"
       ],
 	  "\"MatchableTypes\"": [
-	    "\"$MA\""
+	    "$MA"
       ],
-	  "\"AutoSteamSaleEvent\"": "\"$SL\"",
-	  "\"OnlineStatus\"": "\"$Status\"",
+	  "\"AutoSteamSaleEvent\"": SL,
+	  "\"OnlineStatus\"": "$Status",
 	  "\"SendOnFarmingFinished\"": "\"$FS\"",
 	  "\"IdlePriorityQueueOnly\"": "\"$QE\"",
 	  "\"IdleRefundableGames\"": "\"$FD\"",
@@ -63,23 +65,41 @@ case $IL in
 	  "\"CustomGamePlayedWhileIdle\"": "\"$CM\"",
 	  "\"GamesPlayedWhileIdle\"": [
 	    "\"$GP\""
-     }" > /root/ASF/config/bot.json #check
-	  echo -e "请选择您是否要自动接受礼物 \n1.是 \n2.否"
+     }" > /root/ASF/config/master.json #check
+	  echo -e "请选择您是否要自动接受礼物 \n1.是 \n2.否（默认）"
 	  read GF
 	  if [ $GF == 1 ]; then
-	    sed -i 's/GT/True/' /root/ASF/config/bot.json
+	    sed -i 's/GT/True/' /root/ASF/config/master.json
 	  else
-	    sed -i 's/GT/False/' /root/ASF/config/bot.json
+	    if [ -z "${GF}" ];then
+		  sed -i 's/GT/False/' /root/ASF/config/ASF/master.json
+		fi
+	  else
+	    sed -i 's/GT/False/' /root/ASF/config/master.json
 	  fi
+	  echo -e "请选择您是否要开启促销期间自动浏览队列等活动 \n1.是 \n2.否"
+	  if [ $SL == 1 ];  then
+	    sed -i 's/SL/True/' /root/ASF/config/ASF/master.json
+	  else
+	    sed -i 's/SL/False/' /root/ASF/config/ASF/master.json
+	  fi #check
+	  echo -e "请选择您是否要开启小号功能？ \n1.开启 \n2.不开启 \n请输入数字"
+	  read XH
+	  case $XH in
+	    1)echo -e "请选择使用!loot指令时从小号提取哪种物品，如果多选，请用半角逗号隔开 \n0.以下都不提取 \n1.未拆封的补充包 \n2.Steam表情 \n3.闪亮集换式卡牌 \n4.个人资料背景 \n5.普通集换式卡牌 \n6.宝珠（含成袋及非成袋）"
+	      read LO
+	      echo -e "请选择使用SteamTradeMatcher进行交易匹配时适用的物品，如果多选，请用半角逗号隔开 \n0.以下都不提取 \n1.未拆封的补充包 \n2.Steam表情 \n3.闪亮集换式卡牌 \n4.个人资料背景 \n5.普通集换式卡牌 \n6.宝珠（含成袋及非成袋）"
+	      read MA
+	      echo -e
      ;;
     2)cd ASF/config
-      touch bot.json
+      touch master.json
       echo -e "{
       "\"Enabled\"": true,
       "\"SteamLogin\"": "\"$Account\"",
       "\"SteamPassword\"": "\"$Code\"",
-      "\"IsBotAccount\"": false
-    }" > /root/ASF/config/bot.json
+      "\"IsmasterAccount\"": false
+    }" > /root/ASF/config/master.json
     ;;
 	esac
   ;;
