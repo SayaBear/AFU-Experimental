@@ -33,7 +33,7 @@ case $IL in
       echo "输入你的组id"
       read Group
 	  echo -e "请选择您期待的挂卡顺序 \n0.无序模式 \n1.根据AppID正序挂卡 \n2.根据AppID逆序挂卡 \n3.根据剩余掉卡数自少到多挂卡 \n4.根据剩余挂卡数自多到少挂卡 \n5.根据游戏时间自少到多挂卡 \n6.根据游戏时间自多到少挂卡 \n7.根据游戏名A-Z挂卡 \n8.根据游戏名Z-A挂卡 \n9.随机模式 \n10.根据徽章等级由低到高挂卡 \n11.根据徽章等级由高到低挂卡 \n12.根据游戏入库时间由远及近挂卡 \n13.根据游戏入库时间由近及远挂卡 \n14.优先挂不可交易卡牌 \n15.优先挂可交易卡牌"
-	  read Order
+	  read Order #check
       cd ASF/config
       touch bot.json
       echo -e "{
@@ -44,8 +44,16 @@ case $IL in
       "\"s_SteamMasterClanID\"": "\"$Group\"",
       "\"SteamUserPermissions\"": {
         "\"$ID\"": 3
-		}
+		},
+	  "\"TradingPreferences\"": "\"$Order\"",
+	  "\"AcceptGifts\"": "\"$GF\""
      }" > /root/ASF/config/bot.json
+	  echo -e "请选择您是否要自动接受礼物 \n1.是 \n2.否"
+	  read GF
+	  if [ $GF == 1 ]
+	  sed -i 's/GF/True/' /root/ASF/config/bot.json
+	  else
+	  sed -i 's/GF/False/' /root/ASF/config/bot.json
      ;;
     2)cd ASF/config
       touch bot.json
