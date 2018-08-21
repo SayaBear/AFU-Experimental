@@ -46,15 +46,32 @@ case $IL in
         "\"$ID\"": 3
 		},
 	  "\"TradingPreferences\"": "\"$Order\"",
-	  "\"AcceptGifts\"": "\"$Gift\""
-     }" > /root/ASF/config/bot.json
+	  "\"AcceptGifts\"": "\"$GT\"",
+	  "\"LootableTypes\"": [
+	    "\"$LO\""
+      ],
+	  "\"MatchableTypes\"": [
+	    "\"$MA\""
+      ],
+	  "\"AutoSteamSaleEvent\"": "\"$SL\"",
+	  "\"OnlineStatus\"": "\"$Status\"",
+	  "\"SendOnFarmingFinished\"": "\"$FS\"",
+	  "\"IdlePriorityQueueOnly\"": "\"$QE\"",
+	  "\"IdleRefundableGames\"": "\"$FD\"",
+	  "\"ShutdownOnFarmingFinished\"": "\"$SD\"",
+	  "\"CustomGamePlayedWhileFarming\"": "\"$CT\"",
+	  "\"CustomGamePlayedWhileIdle\"": "\"$CM\"",
+	  "\"GamesPlayedWhileIdle\"": [
+	    "\"$GP\""
+     }" > /root/ASF/config/bot.json #check
 	  echo -e "请选择您是否要自动接受礼物 \n1.是 \n2.否"
 	  read GF
 	  if [ $GF == 1 ]; then
-	    sed -i 's/Gift/True/' /root/ASF/config/bot.json
+	    sed -i 's/GT/True/' /root/ASF/config/bot.json
 	  else
-	    sed -i 's/Gift/False/' /root/ASF/config/bot.json
+	    sed -i 's/GT/False/' /root/ASF/config/bot.json
 	  fi
+	  
      ;;
     2)cd ASF/config
       touch bot.json
