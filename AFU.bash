@@ -70,10 +70,8 @@ case $IL in
 	  read GF
 	  if [ $GF == 1 ]; then
 	    sed -i 's/GT/True/' /root/ASF/config/master.json
-	  else
-	    if [ -z "${GF}" ];then
-		  sed -i 's/GT/False/' /root/ASF/config/ASF/master.json
-		fi
+	  elif [ -z "${GF}" ];then
+		sed -i 's/GT/False/' /root/ASF/config/ASF/master.json
 	  else
 	    sed -i 's/GT/False/' /root/ASF/config/master.json
 	  fi
