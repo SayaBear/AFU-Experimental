@@ -102,7 +102,7 @@ case $IL in
 	  if [[ -z $CR ]];then
 	    sed -i '/CT/d' /root/ASF/config/master.json
 	  else
-	    sed -i '/s/CT/"CR"' /root/ASF/config/master.json
+	    sed -i '/s/CT/"$CR"' /root/ASF/config/master.json
 	  fi 
      ;;
     2)cd ASF/config
