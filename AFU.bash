@@ -60,7 +60,7 @@ case $IL in
 	  "\"IdlePriorityQueueOnly\"": QE,
 	  "\"IdleRefundableGames\"": FD,
 	  "\"ShutdownOnFarmingFinished\"": SD,
-	  "\"CustomGamePlayedWhileFarming\"": "CT",
+	  "\"CustomGamePlayedWhileFarming\"": "$CT",
      }" > /root/ASF/config/master.json #check
 	  echo -e "请选择您是否要自动接受礼物 \n1.是 \n2.否（默认）"
 	  read GF
