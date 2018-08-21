@@ -62,37 +62,37 @@ case $IL in
 	  "\"ShutdownOnFarmingFinished\"": SD,
 	  "\"CustomGamePlayedWhileFarming\"": "CT",
      }" > /root/ASF/config/master.json #check
-	  echo -e "请选择您是否要自动接受礼物 \n1.是 \n2.否（默认）"
+	  read -p "请选择您是否要自动接受礼物 \n1.是 \n2.否（默认）" GF
 	  read GF
-	  if [ $GF == 1 ]; then
+	  if [ $GF = 1 ]; then
 	    sed -i 's/GT/True/' /root/ASF/config/master.json
 	  else
 	    sed -i 's/GT/False/' /root/ASF/config/master.json
 	  fi
 	  echo -e "请选择您是否要开启促销期间自动浏览队列等活动 \n1.是 \n2.否（默认）"
 	  read SV
-	  if [ $SV == 1 ];  then
+	  if [ $SV = 1 ];  then
 	    sed -i 's/SL/True/' /root/ASF/config/master.json
 	  else
 	    sed -i 's/SL/False/' /root/ASF/config/master.json
 	  fi #check
 	  echo -e "请选择是否要通过!iq指令指定挂卡顺序 \n1.是 \n2.否"
 	  read IQ
-	  if [ $IQ == 1 ]; then
+	  if [ $IQ = 1 ]; then
 	    sed -i 's/QE/True/' /root/ASF/config/master.json
 	  else
 	    sed -i 's/QE/False/' /root/ASF/config/master.json
 	  fi #Mark
 	  echo -e "请选择是否挂尚可退款的游戏 \n1.是 \n2.否"
 	  read FL
-	  if [ $FL == 2 ]; then
+	  if [ $FL = 2 ]; then
 	    sed -i 's/FD/False/' /root/ASF/config/master.json
 	  else
 	    sed -i 's/FD/True/' /root/ASF/config/master.json
 	  fi
 	  echo -e "请选择挂卡结束后是否退出ASF程序 \n1.是 \n2.否"
 	  read SW
-	  if [ $SW == 2]; then
+	  if [ $SW = 2]; then
 	    sed -i 's/SD/False/' /root/ASF/config/master.json
 	  else
 	    sed -i 's/SD/True/' /root/ASF/config/master.json
